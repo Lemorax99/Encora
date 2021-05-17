@@ -1,0 +1,32 @@
+#main{
+    background: white;
+    border: 1px solid black;
+    border-radius: 5%;
+    width: 500px;
+    height: 500px;
+    margin-top: 50px;
+    margin-left: 440px;
+}
+#menu{
+    text-align: justify;
+}
+#menu form p{
+    display:block;
+    float: left;
+}
+#table{
+    clear: both;
+    text-align: center;
+}
+#task p{
+    display: block;
+    margin-left: 10px;
+    float: left;
+}
+#register{
+    margin-top: 100px;
+    margin-left: 70px;
+}
+.general{
+    margin-left: 100px;
+}

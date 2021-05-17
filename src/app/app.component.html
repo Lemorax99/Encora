@@ -1,3 +1,64 @@
+<div id='main'>
+  <div *ngIf='page == "main"' id='menu' class='general'>
+    <form #taskForm='ngForm' (ngSubmit)='register(taskForm)'>
+      <h2>Task list</h2>
+      <p>
+        <label for='name' >Task : </label>
+        <input type='text' name='name' #name='ngModel' [(ngModel)]='task.name' required/>
+      </p>
+      <p>
+        <input type='submit' value='Register' [disabled]='!taskForm.form.valid'/>
+      </p>
+    </form>
+  </div>
+  <div *ngIf='page == "main"' id='table' class='general'>
+    <h3 >Tasks</h3>
+    <table class='default'>
+      <tr *ngFor='let _task of tasks'>
+        <td>{{_task.name}}</td>
+        <td>
+          <button *ngIf='_task.state' (click)='play(_task)'>pause</button>
+          <button *ngIf='!_task.state' (click)='play(_task)'>play</button>
+        </td>
+        <td>
+          {{_task.hour}} : {{_task.minute}} : {{_task.second}}
+        </td>
+        <td>
+          <button (click)='edit(_task.id)'>edit</button>
+        </td>
+        <td>
+          <button (click)='delete(_task.id)'>delete</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div *ngIf='page == "register" || page  == "edit"' id='register' class='general'>
+    <form #taskRegisterForm='ngForm' (ngSubmit)='register(taskRegisterForm)'> 
+      <p *ngIf='page == "register"'>
+        <label>Task : {{task.name}}</label>
+      </p>
+      <p *ngIf='page  == "edit"'>
+        <label for='name'>Task : </label>
+        <input type='text' name='name' #name='ngModel' [(ngModel)]='task.name' required/>
+      </p>
+      <p>
+        <label for='hour'>Hours : </label>
+        <input type='number' name='hour' #hour='ngModel' [(ngModel)]='task.hour' required/>
+      </p>
+      <p>
+        <label for='minute'>Minutes : </label>
+        <input type='number' name='minute' #minute='ngModel' [(ngModel)]='task.minute' required/>
+      </p>
+      <p>
+        <label for='second'>Seconds : </label>
+        <input type='number' name='second' #second='ngModel' [(ngModel)]='task.second' required/>
+      </p>
+      <p>
+        <input type='submit' value='Register' [disabled]='!taskRegisterForm.form.valid' />
+      </p>
+    </form>
+  </div>
+</div>
 
 
 <router-outlet></router-outlet>
