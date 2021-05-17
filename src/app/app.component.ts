@@ -25,7 +25,7 @@ export class AppComponent implements OnInit{
       this.page='register';
     }else{
       if(this.page=='edit'){
-        if((this.task.hour==0 && this.task.minute==0 && this.task.second==0)||this.task.minute>60 || this.task.second>60){
+        if((this.task.hour<=0 && this.task.minute<=0 && this.task.second<=0)||this.task.minute>60 || this.task.second>60){
           alert("Formato de tiempo incorrecto");
         }else{
           for(let _task of this.tasks){
@@ -36,7 +36,7 @@ export class AppComponent implements OnInit{
           }
         }
       }else{
-        if((this.task.hour==0 && this.task.minute==0 && this.task.second==0)||this.task.minute>60 || this.task.second>60){
+        if((this.task.hour<=0 && this.task.minute<=0 && this.task.second<=0)||this.task.minute>60 || this.task.second>60){
           alert("Formato de tiempo incorrecto");
         }else{
           this.task['id']=this.tasks.length+1;
@@ -59,6 +59,7 @@ export class AppComponent implements OnInit{
         if(_task.minute==0){
           if(_task.hour!=0){
             _task.minute=59;
+            _task.second=59;
             _task.hour=_task.hour-1;
           }else{
             clearInterval(intervalo);
